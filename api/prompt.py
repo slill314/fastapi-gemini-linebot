@@ -8,11 +8,11 @@ LANGUAGE_TABLE = {
   "en": "Hello!"
 }
 
-#AI_GUIDELINES = """"""
-#path = "resource/QAdata3.txt"
-#with open(path) as f:
-#    lines = f.readlines()
-#AI_GUIDELINES = ''.join(lines)
+AI_GUIDELINES = """"""
+path = "resource/QAdata3.txt"
+with open(path) as f:
+    lines = f.readlines()
+AI_GUIDELINES = ''.join(lines)
 
 
 class Prompt:
