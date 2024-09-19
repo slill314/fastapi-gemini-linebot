@@ -9,10 +9,10 @@ LANGUAGE_TABLE = {
 }
 
 AI_GUIDELINES = """"""
-path = "resource/20240919-social_houseQA.txt"
-with open(path) as f:
-    lines = f.readlines()
-AI_GUIDELINES = ''.join(lines)
+#path = "resource/20240919-social_houseQA.txt"
+#with open(path) as f:
+#    lines = f.readlines()
+#AI_GUIDELINES = ''.join(lines)
 
 
 class Prompt:
