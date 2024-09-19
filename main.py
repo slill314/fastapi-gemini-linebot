@@ -32,7 +32,7 @@ def handle_message(event):
     user_id = event.source.user_id  # 取得用戶的 user_id
     print(f"User ID: {user_id}")  # 打印用戶 ID（可以用來 debug）
     
-    allowed_user_ids = ["USER1234", "USER5678"]  # 允許的 user_id 清單
+    allowed_user_ids = ["U34651e48067cdde9fb6df533b53e367c", "USER5678"]  # 允許的 user_id 清單
 
     if event.source.user_id not in allowed_user_ids:
         # 如果用戶不在允許清單中，回應一個提示消息
