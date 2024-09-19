@@ -40,7 +40,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             #TextSendMessage(text="你無權使用這個功能。")
-            TextSendMessage(text=f"你無權使用這個功能。你的 User ID 是: {user_id}")
+            TextSendMessage(text=f"你無權使用這個功能，請聯絡管理員將ID加入白名單。你的 User ID 是: {user_id}")
         )
         return
  
