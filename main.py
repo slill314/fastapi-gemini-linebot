@@ -2,6 +2,9 @@ from fastapi import FastAPI , HTTPException, Request
 from linebot import LineBotApi, WebhookHandler
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from api.gemini import Gemini
+
+#2024.9.26新增
+from linebot.v3.messaging import ShowLoadingAnimationRequest
 import os
 
 app = FastAPI()
@@ -46,7 +49,8 @@ def handle_message(event):
  
     if event.message.type != "text":
         return
-
+    #2024.9.26 新增
+    await line_bot_api.show_loading_animation(ShowLoadingAnimationRequest(chatId=event.source.user_id, loadingSeconds=5))
     gemini.add_msg(f"HUMAN:{event.message.text}?\n")
     reply_msg = gemini.get_response().replace("AI:", "", 1)
     gemini.add_msg(f"AI:{reply_msg}\n")
