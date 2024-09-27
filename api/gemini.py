@@ -7,7 +7,8 @@ genai.configure(api_key = os.getenv("GEMINI_API_KEY"))
 class Gemini:
     def __init__(self):
         self.prompt = Prompt()
-        self.model = genai.GenerativeModel('gemini-1.5-pro')
+        #self.model = genai.GenerativeModel('gemini-1.5-pro')
+        #self.model = genai.GenerativeModel('gemini-1.5-flash')
 
     def get_response(self):
         tmp = self.prompt.generate_prompt()
