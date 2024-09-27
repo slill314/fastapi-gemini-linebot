@@ -33,7 +33,12 @@ def handle_message(event):
     user_id = event.source.user_id  # 取得用戶的 user_id
     print(f"User ID: {user_id}")  # 打印用戶 ID（可以用來 debug）
     
-    allowed_user_ids = ["U34651e48067cdde9fb6df533b53e367c", "U092b3fc3dcef603a0fc0a56000468e1d", "U14f71a8ff59d964b579a047c6367a0e3"]  # 允許的 user_id 清單
+    allowed_user_ids = [
+        "U34651e48067cdde9fb6df533b53e367c",
+        "U092b3fc3dcef603a0fc0a56000468e1d",
+        "U14f71a8ff59d964b579a047c6367a0e3",
+        "U12c2b60e458a682b63ad793e325613df"
+    ]  # 允許的 user_id 清單
     #U34651e48067cdde9fb6df533b53e367c 隆
     #U092b3fc3dcef603a0fc0a56000468e1d 不路
     if event.source.user_id not in allowed_user_ids:
