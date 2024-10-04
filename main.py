@@ -42,6 +42,7 @@ def handle_message(event):
     ]  # 允許的 user_id 清單
     #U34651e48067cdde9fb6df533b53e367c 隆
     #U092b3fc3dcef603a0fc0a56000468e1d 不路
+    #U8c73d74ccc1d8e059579dff534ee5944 印節
     if event.source.user_id not in allowed_user_ids:
         # 如果用戶不在允許清單中，回應一個提示消息
         line_bot_api.reply_message(
