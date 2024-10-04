@@ -37,7 +37,8 @@ def handle_message(event):
         "U34651e48067cdde9fb6df533b53e367c",
         "U092b3fc3dcef603a0fc0a56000468e1d",
         "U14f71a8ff59d964b579a047c6367a0e3",
-        "U12c2b60e458a682b63ad793e325613df"
+        "U12c2b60e458a682b63ad793e325613df",
+        "U8c73d74ccc1d8e059579dff534ee5944"
     ]  # 允許的 user_id 清單
     #U34651e48067cdde9fb6df533b53e367c 隆
     #U092b3fc3dcef603a0fc0a56000468e1d 不路
