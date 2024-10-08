@@ -46,7 +46,7 @@ def scrape_news():
                 full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
                 message = f"隨選新聞: {title}\n網址: {full_link}"          
                 
-    return message
+    return title
     
     
 
