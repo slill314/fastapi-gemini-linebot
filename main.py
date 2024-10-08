@@ -2,7 +2,7 @@ from fastapi import FastAPI , HTTPException, Request
 from linebot import LineBotApi, WebhookHandler
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from api.gemini import Gemini
-from api.get_news import scrape_news
+from api.test import fetch_and_save_news_as_json
 
 import os
 
@@ -61,7 +61,9 @@ def handle_message(event):
         return
 
     if event.message.text == "新聞":
-        reply_msg = scrape_news()
+        fetch_and_save_news_as_json()
+
+        reply_msg = "執行完畢"
         
         line_bot_api.reply_message(
             event.reply_token,
