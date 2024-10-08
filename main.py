@@ -35,8 +35,13 @@ def scrape_news():
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
-        news_items = soup.find_all('div', class_='part_list_2')      
-    return news_items
+        news_items = soup.find_all('div', class_='part_list_2')
+        for i, item in enumerate(news_items[:5]):  # 获取前五则新闻
+                title = item.find('h3').text
+                relative_link = item.find('a')['href']
+                full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
+                message = f"隨選新聞: {title}\n網址: {full_link}"
+    return message
 
 import os
 
