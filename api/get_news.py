@@ -28,7 +28,7 @@ def scrape_news():
         #print(f"Error fetching URL: {e}")
 
     if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'html.parser')
+        soup = BeautifulSoup(response.text, 'lxml')
         news_items = soup.find_all('div', class_='part_list_2')      
     return news_items
     
