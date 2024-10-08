@@ -66,7 +66,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="爬取ETtoday新聞中...")
-
+        )
         reply_msg = scrape_news()
         
         line_bot_api.reply_message(
