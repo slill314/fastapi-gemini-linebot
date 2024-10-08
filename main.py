@@ -37,11 +37,7 @@ def scrape_news():
         #soup = BeautifulSoup(response.text, 'html.parser')
         #news_items = soup.find_all('div', class_='part_list_2')
         message="新聞有:"
-        #for i, item in enumerate(news_items[:5]):  # 获取前五则新闻
-        #        title = item.find('h3').text
-        #        relative_link = item.find('a')['href']
-        #        full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
-        #       message = f"隨選新聞: {title}\n網址: {full_link}"
+
     return message
 
 import os
@@ -107,6 +103,11 @@ def handle_message(event):
             TextSendMessage(text="爬取ETtoday新聞中...")
         )
         reply_msg = scrape_news()
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="下午1554")
+        )
         
         line_bot_api.reply_message(
             event.reply_token,
