@@ -36,6 +36,7 @@ def scrape_news():
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
         news_items = soup.find_all('div', class_='part_list_2')
+        message="新聞有:"
         for i, item in enumerate(news_items[:5]):  # 获取前五则新闻
                 title = item.find('h3').text
                 relative_link = item.find('a')['href']
