@@ -67,7 +67,7 @@ def handle_message(event):
         if news_list:  # 確認 news_list 不為空
             reply_msg = "\n\n".join(news_list)  # 將消息列表合併為一個字串
         else:
-            reply_msg = "目前沒有可用的新聞資訊
+            reply_msg = "目前沒有可用的新聞資訊"
         line_bot_api.reply_message(
             event.reply_token,
             #TextSendMessage(text="你。好")
