@@ -3,11 +3,4 @@ uvicorn
 line-bot-sdk
 google.generativeai
 
-#2024.10.08新增爬蟲用
-requests
-time
-datetime
-BeautifulSoup4
-urllib.parse
-fake_useragent
 
