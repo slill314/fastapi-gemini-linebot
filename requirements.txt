@@ -10,3 +10,4 @@ datetime
 #time 原生就有 不用安裝
 fake_useragent
 BeautifulSoup4
+lxml
