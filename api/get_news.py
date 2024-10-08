@@ -25,13 +25,17 @@ def scrape_news():
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
         response.raise_for_status()
-        #print(f"Error fetching URL: {e}")
-
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'lxml')
-        news_items = soup.find_all('div', class_='part_list_2')      
+        #print(f"Error fetching URL: {e}")   
     return news_items
-    
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        news_items = soup.find_all('div', class_='part_list_2')
+        for i, item in enumerate(news_items[:5]):
+            title = item.find('h3').text
+            relative_link = item.find('a')['href']
+            full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
+            message = f"隨選新聞: {title}\n網址: {full_link}"
+    return message
     
 
 
