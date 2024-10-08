@@ -30,10 +30,10 @@ def scrape_news():
 
     try:
         response = fetch_url_with_retry(url, headers=headers)
-        print("第一次就成功", formatted_time)
+        #print("第一次就成功", formatted_time)
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
-        print(f"Error fetching URL: {e}")
+        #print(f"Error fetching URL: {e}")
         return []
     
     messages = []  # 用于存储消息的列表
