@@ -3,7 +3,14 @@ import time
 from datetime import datetime
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+from fake_useragent import UserAgent
 
+# 要抓取的新闻网页
+url = "https://www.ettoday.net/news/news-list.htm"
+url_fornews = "https://www.ettoday.net/news/"
+
+def fetch_url_with_retry(url, headers):
+    return requests.get(url, headers=headers)
 
 # 抓取新闻标题和链接的函数，限制只抓取前5则
 def scrape_news():
@@ -27,8 +34,10 @@ def scrape_news():
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
         print(f"Error fetching URL: {e}")
-        return
+        return []
     
+    messages = []  # 用于存储消息的列表
+
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'lxml')
         news_items = soup.find_all('div', class_='part_list_2')
@@ -38,5 +47,13 @@ def scrape_news():
                 relative_link = item.find('a')['href']
                 full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
                 message = f"隨選新聞: {title}\n網址: {full_link}"
+                
+                messages.append(message)  # 将消息添加到列表
 
-                return message
+        return messages
+
+
+# 调用函数并打印结果
+#news_messages = scrape_news()
+#for message in news_messages:
+#    print(message)
