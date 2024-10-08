@@ -71,7 +71,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="你。好")
-            )
+        )
         return
     
     gemini.add_msg(f"HUMAN:{event.message.text}?\n")
