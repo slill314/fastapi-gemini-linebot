@@ -63,7 +63,7 @@ def handle_message(event):
 
     if event.message.text == "新聞":
         #reply_msg = get_news.scrape_news()
-        news_list = scrape_news()
+        news_list = sc()
         #news_list = []
         if news_list:  # 確認 news_list 不為空
             reply_msg = "\n\n".join(news_list)  # 將消息列表合併為一個字串
