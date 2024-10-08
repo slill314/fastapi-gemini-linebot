@@ -2,6 +2,7 @@ from fastapi import FastAPI , HTTPException, Request
 from linebot import LineBotApi, WebhookHandler
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from api.gemini import Gemini
+from api.get_news import scrape_news
 
 import os
 
@@ -57,6 +58,14 @@ def handle_message(event):
         return
  
     if event.message.type != "text":
+        return
+
+    if event.message.text == "新聞":
+        reply_msg=scrape_news()
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=reply_msg)
+        )
         return
     
     gemini.add_msg(f"HUMAN:{event.message.text}?\n")
