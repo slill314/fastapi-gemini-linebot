@@ -37,7 +37,7 @@ def scrape_news():
         #print(f"Error fetching URL: {e}")
 
     if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'lxml')
+        soup = BeautifulSoup(response.text, 'html.parser')
         news_items = soup.find_all('div', class_='part_list_2')
         if news_items:
             for i, item in enumerate(news_items[:5]):  # 获取前五则新闻
