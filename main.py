@@ -61,7 +61,7 @@ def handle_message(event):
         return
 
     if event.message.text == "新聞":
-        reply_msg=get_news.scrape_news()
+        reply_msg = get_news.scrape_news()
         line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_msg)
