@@ -6,6 +6,7 @@ google.generativeai
 #2024.10.8 for get_news.py
 requests
 datetime
-urllib.parse
+#urllib.parse 原生就有 不用安裝
+#time 原生就有 不用安裝
 fake_useragent
 
