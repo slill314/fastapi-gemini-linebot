@@ -98,12 +98,6 @@ def handle_message(event):
 
     if event.message.text == "新聞":
         #reply_msg = scrape_news()
-
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="下午1554")
-        )
-
         reply_msg = "scrape_news()"
         line_bot_api.reply_message(
             event.reply_token,
