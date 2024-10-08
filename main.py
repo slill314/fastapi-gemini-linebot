@@ -61,9 +61,17 @@ def handle_message(event):
         return
 
     if event.message.text == "新聞":
+        #reply_msg = get_news.scrape_news()
+        #news_list = scrape_news()
+        news_list = []
+        if news_list:  # 確認 news_list 不為空
+            reply_msg = "\n\n".join(news_list)  # 將消息列表合併為一個字串
+        else:
+            reply_msg = "目前沒有可用的新聞資訊
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="你。好")
+            #TextSendMessage(text="你。好")
+            TextSendMessage(text=reply_msg)
         )
         return
     
