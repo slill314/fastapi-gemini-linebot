@@ -39,21 +39,7 @@ def scrape_news():
     messages = []  # 用于存储消息的列表
 
     if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'lxml')
-        news_items = soup.find_all('div', class_='part_list_2')
-        if news_items:
-            for i, item in enumerate(news_items[:5]):  # 获取前五则新闻
-                title = item.find('h3').text
-                relative_link = item.find('a')['href']
-                full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
-                message = f"隨選新聞: {title}\n網址: {full_link}"
-                
-                messages.append(message)  # 将消息添加到列表
+        messages="123"
 
         return messages
 
-
-# 调用函数并打印结果
-#news_messages = scrape_news()
-#for message in news_messages:
-#    print(message)
