@@ -3,6 +3,7 @@ from linebot import LineBotApi, WebhookHandler
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from api.gemini import Gemini
 from api.get_news import scrape_news
+from api.test import sc
 
 import os
 
