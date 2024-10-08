@@ -33,6 +33,7 @@ def scrape_news():
         #print("第一次就成功", formatted_time)
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
+        response.raise_for_status()
         #print(f"Error fetching URL: {e}")
         
     return response.status_code
