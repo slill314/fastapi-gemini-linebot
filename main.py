@@ -102,13 +102,14 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text="爬取ETtoday新聞中...")
         )
-        reply_msg = scrape_news()
+        #reply_msg = scrape_news()
 
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="下午1554")
         )
-        
+
+        reply_msg = "scrape_news()"
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_msg)
