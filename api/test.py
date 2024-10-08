@@ -23,7 +23,7 @@ def fetch_and_save_news_as_json():
         return
 
     # 解析 HTML 并获取新闻项
-    soup = BeautifulSoup(response.text, 'lxml')
+    soup = BeautifulSoup(response.text, 'html.parser')
     news_items = soup.find_all('div', class_='part_list_2')
 
     # 存储新闻数据
