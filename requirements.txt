@@ -7,7 +7,6 @@ google.generativeai
 requests
 time
 datetime
-bs4
 BeautifulSoup4
 urllib.parse
 fake_useragent
