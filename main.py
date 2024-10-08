@@ -62,7 +62,10 @@ def handle_message(event):
         return
 
     if event.message.text == "新聞":
-        fetch_and_save_news_as_json()
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="爬取ETtoday新聞中...")
 
         reply_msg = scrape_news()
         
