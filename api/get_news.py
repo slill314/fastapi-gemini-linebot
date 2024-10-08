@@ -15,7 +15,7 @@ def fetch_url_with_retry(url, headers):
 # 抓取新闻标题和链接的函数，限制只抓取前5则
 def scrape_news():
     # 获取当前日期和时间
-    current_time = datetime.now()
+    #current_time = datetime.now()
 
     #變換ua
     ua = UserAgent()
@@ -25,7 +25,7 @@ def scrape_news():
     #print(headers)
 
     # 格式化并打印当前时间
-    formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
+    #formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
     #print("執行時間：", formatted_time)
 
     try:
@@ -34,12 +34,9 @@ def scrape_news():
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
         #print(f"Error fetching URL: {e}")
-        return []
-    
-    messages = []  # 用于存储消息的列表
+        
+    return response.status_code
 
-    if response.status_code == 200:
-        messages="123"
 
-        return messages
+        
 
