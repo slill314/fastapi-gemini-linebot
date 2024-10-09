@@ -101,7 +101,10 @@ def handle_message(event):
 
     if event.message.text == "搜尋新聞中..(幾秒後沒回應的話，再點擊一次，勿連續點擊)":
         
-        reply_msg = scrape_news()
+        aa = scrape_news()
+        if aa:
+            reply_msg = "\n".join(aa)
+            
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply_msg)
