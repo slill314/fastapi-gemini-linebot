@@ -11,8 +11,7 @@ url_fornews = "https://www.ettoday.net/news/"
 
 def fetch_url_with_retry(url, headers):
     return requests.get(url, headers=headers)
-
-# 抓取新闻标题和链接的函数，限制只抓取前5则
+    
 def scrape_news():
     #變換ua
     ua = UserAgent()
@@ -30,11 +29,16 @@ def scrape_news():
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
         news_items = soup.find_all('div', class_='part_list_2')
-        for i, item in enumerate(news_items[:5]):
-            title = item.find('h3').text
-            relative_link = item.find('a')['href']
-            full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
-            message = f"隨選新聞: {title}\n網址: {full_link}"
+        if news_items:
+            messages = []  # 創建一個列表來存儲新聞信息
+            for i, item in enumerate(news_items[0].find_all('h3')[:9]):  # 限制顯示前10條新聞
+                title = item.text.strip()
+                relative_link = item.find('a')['href']
+                full_link = urljoin(url_fornews, relative_link)  # 將相對鏈接轉換為完整鏈接
+                message = f"隨選新聞 {i + 1}: {title}\n網址: {full_link}"
+                messages.append(message)  # 將每條新聞信息添加到列表中
+                #print(message)
+
     return message
     
 
