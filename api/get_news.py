@@ -35,11 +35,11 @@ def scrape_news():
                 title = item.text.strip()
                 relative_link = item.find('a')['href']
                 full_link = urljoin(url_fornews, relative_link)  # 將相對鏈接轉換為完整鏈接
-                message = f"隨選新聞 {i + 1}: {title}\n網址: {full_link}\n"
+                message = f"隨選新聞 {i + 1}: {title}\n網址: {full_link}"
                 messages.append(message)  # 將每條新聞信息添加到列表中
                 #print(message)
 
-    return message
+    return messages
     
 
 
