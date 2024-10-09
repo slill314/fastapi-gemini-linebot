@@ -99,7 +99,7 @@ def handle_message(event):
     if event.message.type != "text":
         return
 
-    if event.message.text == "新聞":
+    if event.message.text == "搜尋新聞中..(幾秒後沒回應的話，再點擊一次，勿連續點擊)":
         
         reply_msg = scrape_news()
         line_bot_api.reply_message(
