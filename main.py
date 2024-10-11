@@ -57,9 +57,12 @@ def handle_message(event):
         return
  
     if event.message.type != "text":
+        return
+
+    if event.message.text == "啟動":
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="我只吃文字喔")
+            TextSendMessage(text="原神。啟動！")
         )
         return
 
