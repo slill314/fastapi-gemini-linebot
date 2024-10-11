@@ -2,46 +2,7 @@ from fastapi import FastAPI , HTTPException, Request
 from linebot import LineBotApi, WebhookHandler
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from api.gemini import Gemini
-#from api.test import fetch_and_save_news_as_json
 from api.get_news import scrape_news
-
-#import requests
-#import time
-#from datetime import datetime
-#from bs4 import BeautifulSoup
-#from urllib.parse import urljoin
-#from fake_useragent import UserAgent
-
-# 要抓取的新闻网页
-#url = "https://www.ettoday.net/news/news-list.htm"
-#url_fornews = "https://www.ettoday.net/news/"
-
-#def fetch_url_with_retry(url, headers):
-#    return requests.get(url, headers=headers)
-# 抓取新闻标题和链接的函数，限制只抓取前5则
-#def scrape_news():
-#    #變換ua
-#    ua = UserAgent()
-#    user_agent = ua.random
-#    headers = {'user-agent': user_agent}
-#    
-#    try:
-#        response = fetch_url_with_retry(url, headers=headers)
-#        #print("第一次就成功", formatted_time)
-#        response.raise_for_status()
-#    except requests.exceptions.RequestException as e:
-#        response.raise_for_status()
-#        #print(f"Error fetching URL: {e}")
-#
-#    if response.status_code == 200:
-#        soup = BeautifulSoup(response.text, 'html.parser')
-#        news_items = soup.find_all('div', class_='part_list_2')
-#        for i, item in enumerate(news_items[:5]):
-#            title = item.find('h3').text
-#            relative_link = item.find('a')['href']
-#            full_link = urljoin(url_fornews, relative_link)  # 将相对链接转换为完整链接
-#            message = f"隨選新聞: {title}\n網址: {full_link}"
-#    return message
 
 import os
 
@@ -65,7 +26,6 @@ async def callback(request:Request):
         print(body, signature)
         raise HTTPException(400)
     return 'OK'
-
 
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -97,6 +57,10 @@ def handle_message(event):
         return
  
     if event.message.type != "text":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="我只吃文字喔")
+        )
         return
 
     if event.message.text == "搜尋新聞中..(幾秒後沒回應的話，再點擊一次，勿連續點擊)":
